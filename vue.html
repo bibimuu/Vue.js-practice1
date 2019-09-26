@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Vue.js</title>
+    <link rel="stylesheet" href="vue.css">
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='color in colors'>
+                {{color.name}}
+            </li>
+        </ul>
+        <p>
+            firstName: <input type="text" v-model='firstName'>
+        </p>
+        <p>
+            lastName: <input type="text" v-model='lastName'>
+        </p>
+        <p>
+            fullName: {{ fullName }}
+        </p>
+        <p>
+            <input type="text" v-model='km'>
+            <input type="text" v-model='m'>
+            <input type="text" v-model='mm'>
+        </p>
+        <p>
+            {{ message }}
+        </p>
+        <p>
+            <input type="text" v-model='message'>
+        </p>
+        <h2>computed</h2>
+        <ol>
+            <li>{{computednumber}}</li>
+            <li>{{computednumber}}</li>
+            <li>{{computednumber}}</li>
+        </ol>
+        <h2>methods</h2>
+        <ol>
+            <li>{{rightnumber()}}</li>
+            <li>{{rightnumber()}}</li>
+            <li>{{rightnumber()}}</li>
+        </ol>
+        <p>
+            base price: <input type="text" v-model="baseprice">
+        </p>
+        <p>
+            tax included price: <input type="text" v-model="taxincludedprice">
+        </p>
+
+        <p>
+            {{text | readMore(20, '...')}}
+        </p>
+        <p>
+            {{jpyprice | toUSD | numberFormat }}
+        </p>
+        <h2>Mustache</h2>
+        <p>
+            {{price | numberFormat}}
+        </p>
+        <h2>
+            v-bind
+        </h2>
+        <input type="text" v-bind:value='price | numberFormat'>
+        <p v-html='message'>
+            {{message}}
+        </p>
+        <p>
+            {{number + 1}}
+        </p>
+        <p>
+            {{ok ? 'yes':'no'}}
+        </p>
+        <p v-once>
+            {{ message }}
+        </p>
+        <button v-on:click="clickhandler">
+            clicl!
+        </button>
+        <h2>TODO List</h2>
+        <form v-on:submit.prevent>
+            <input type="text" 　v-model="list">
+            <button v-on:click="addItem">
+            Add
+          </button>
+        </form>
+        <ul v-model="list">
+            <li v-for="(todo, index) in todos">
+                <input type="checkbox" v-model="todo.isDone">
+                <span v-bind:class='{ done: todo.isDone}'>{{todo.item}}</span>
+                <button v-on:click='deleteItem(index)'>Delete</button>
+            </li>
+        </ul>
+
+        <h2>BITCOIN PRICE</h2>
+        <section v-if='hasError'>
+            Error.
+        </section>
+        <section v-else>
+            <div v-if='loading'>
+                Loading...
+            </div>
+            <div v-else>
+                <ul v-cloak>
+                    <li v-for="(rate, currency) in bpi">
+                        {{ currency }} : {{ rate.rate_float | currencyDecimal}}
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="vue.js"></script>
+</body>
+
+</html>

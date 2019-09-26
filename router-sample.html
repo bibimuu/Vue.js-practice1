@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nested routes - Vue Router</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to='/'>home</router-link>
+        <router-link to='/users/123'>user</router-link>
+        <router-link to='/users/123/profile'>profile</router-link>
+        <router-link to='/users/123/posts'>posts</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.0.6/dist/vue-router.min.js"></script>
+    <script>
+        const User = {
+            template: `
+        <div class="user">
+          <h2>User {{ $route.params.userId}}</h2>
+          <router-view></router-view>
+        </div>
+             `
+        }
+        const profile = {
+            template: `
+            <div class="profile">
+                <h2>profile {{$route.params.userId}}</h2>
+            </div>
+            `
+        }
+        const posts = {
+            template: `
+            <div class="posts">
+                <h2>posts {{$route.params.userId}}</h2>
+            </div>
+            `
+        }
+        const router = new VueRouter({
+            routes: [{
+                path: '/users/:userId',
+                component: User,
+                children: [{
+                    path: 'profile',
+                    component: profile
+                }, {
+                    path: 'posts',
+                    component: posts
+                }]
+            }]
+        })
+        var app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+    <style>
+        body {
+            color: white;
+            background: #fcebb6;
+        }
+        
+        .user {
+            background: #5e412f;
+            padding: 5px;
+        }
+        
+        .profile {
+            background: #78c0a8;
+            padding: 5px;
+        }
+        
+        .posts {
+            background: #f07818;
+            padding: 5px;
+        }
+    </style>
+</body>
+
+</html>

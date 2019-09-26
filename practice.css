@@ -1,0 +1,23 @@
+.large {
+    font-size: 36px;
+}
+
+.text-red {
+    color: red;
+}
+
+.bg-grey {
+    background-color: grey;
+}
+
+.text-blue {
+    color: blue;
+}
+
+.text {
+    font-size: 44px;
+}
+
+.new {
+    font-size: 5px;
+}

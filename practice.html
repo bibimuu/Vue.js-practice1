@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="practice.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox">
+        <p>
+            {{message}}
+        </p>
+        <p>
+            <input type="text" v-on:keyup.esc.space="clear" v-model="message">
+        </p>
+        <p>
+            {{message}}
+        </p>
+        <p>
+            {{counter}}
+        </p>
+        <button @click.once="counter++">
+            click1
+        </button>
+        <button v-on:click="clickHandler($event, 'hello')">
+            click2
+        </button>
+        <p v-show="toggle">
+            dddddddd
+        </p>
+        <p v-if="color === 'red'">
+            stop
+        </p>
+        <p v-else-if="color === 'yellow'">
+            caution
+        </p>
+        <p v-else-if="color === 'blue'">
+            go
+        </p>
+        <p v-else>
+            other
+        </p>
+        <p v-if='toggle'>
+            hello
+        </p>
+        <p v-else>
+            NONO
+        </p>
+        <p :style="styleObject">
+            hhhh
+        </p>
+        <p>
+            sssss<span :style="{color:color, fontSize:font + 'px'}">sssssss</span>
+        </p>
+        <p>
+            pdhdgd<span :class="[isLarge ? classObject:'', textblue]">ndydud</span>
+        </p>
+        <p>
+            <span :class="classObject">uuuuuu</span>
+        </p>
+        <p>
+            HI!<span :class='[textblue, text]'>DAIGORO</span>
+        </p>
+        <p>
+            Hello<span class='bg-grey' :class="{large:isLarge, 'text-red':isRed }">konnitiwa</span>
+        </p>
+        <p>
+            <input type="text" v-model='keyword'>
+        </p>
+        <p>
+            {{message}}
+        </p>
+        <ul>
+            <li v-for='item in items'>
+                <!-- {{item.title}} -->
+                <a :href="item.url" target='_blank'>{{item.title}}</a> likes:{{item.likes_count}}
+            </li>
+        </ul>
+        <p>
+            {{ pData}}
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src='practice.js'></script>
+</body>
+
+</html>

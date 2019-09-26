@@ -1,0 +1,15 @@
+ #app ul {
+     list-style: none;
+ }
+ 
+ #app li>span.done {
+     text-decoration: line-through;
+ }
+ 
+ p {
+     color: blue;
+ }
+ 
+ [v-cloak] {
+     display: none;
+ }
